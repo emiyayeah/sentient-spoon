@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 	<meta name="color-scheme" content="light">
+	<meta name="darkreader-lock">
   <title>pixel painting playground</title>
 
   <style>
@@ -168,11 +169,17 @@
 	<!-- LIVE / WEEKLY PALETTE -->
 	<div class="paletteWrap">
 	  <div class="paletteBlock">
-	    <div class="paletteTitle">live colors</div>
-	    <div class="sectionHint">
-	      all colors currently available for waystation mural-ing <br>
-	    </div>
-	    <div class="palette" id="livePalette" aria-label="Weekly color palette"></div>
+		<div class="paletteTitle">live colors</div>
+		
+		<div class="sectionHint">
+		  this week's available colors plus a permanent white "erase" swatch
+		</div>
+		
+		<div class="sectionHint">
+		  currently painting with: <strong id="currentColorLabel"></strong>
+		</div>
+		
+		<div class="palette" id="livePalette" aria-label="Weekly color palette"></div>
 	  </div>
 	</div>
 
@@ -409,6 +416,7 @@
     const exportBtn = document.getElementById("exportBtn");
     const exportCodeBtn = document.getElementById("exportCodeBtn");
     const loadCodeBtn = document.getElementById("loadCodeBtn");
+		const currentColorLabel = document.getElementById("currentColorLabel");
 	const toggleBonusBtn = document.getElementById("toggleBonusBtn");
 	const bonusPaletteSection = document.getElementById("bonusPaletteSection");
 
@@ -461,6 +469,14 @@
       return { x, y };
     }
 
+			function updateCurrentColorLabel() {
+	  if (selectedColorId === ERASE_ID) {
+	    currentColorLabel.textContent = "erase / background";
+	  } else {
+	    currentColorLabel.textContent = selectedColorId;
+	  }
+	}
+
     /**********************************************************************
      * 6) PALETTE RENDERING
      * --------------------------------------------------------------------
@@ -483,10 +499,11 @@
       b.title = swatch.id;
       b.setAttribute("aria-pressed", String(swatch.id === selectedColorId));
 
-      b.addEventListener("click", () => {
-        selectedColorId = swatch.id;
-        updateSwatchSelectionUI();
-      });
+			b.addEventListener("click", () => {
+			  selectedColorId = swatch.id;
+			  updateSwatchSelectionUI();
+			  updateCurrentColorLabel();
+			});
 
       return b;
     }
@@ -769,12 +786,14 @@
      * 11) INIT
      **********************************************************************/
 
-    renderPalettes();
-    drawAll();
+			renderPalettes();
+			updateCurrentColorLabel();
+			drawAll();
   </script>
 </body>
 
 </html>
+
 
 
 
