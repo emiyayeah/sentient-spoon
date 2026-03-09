@@ -69,6 +69,32 @@
       border-radius: 12px;
     }
 
+	  /* Special styling for the erase / background swatch */
+		.eraseSwatch {
+		  position: relative;
+		  margin-left: 10px; /* pushes it slightly away from the live colors */
+		  background:
+		    linear-gradient(45deg, #ddd 25%, transparent 25%),
+		    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+		    linear-gradient(45deg, transparent 75%, #ddd 75%),
+		    linear-gradient(-45deg, transparent 75%, #ddd 75%);
+		  background-size: 8px 8px;
+		  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
+		}
+
+	/* Red diagonal slash overlay */
+	.eraseSwatch::before {
+	  content: "";
+	  position: absolute;
+	  width: 2px;
+	  height: 130%;
+	  background: rgba(180, 40, 40, 0.75);
+	  left: 50%;
+	  top: -15%;
+	  transform: rotate(45deg);
+	  pointer-events: none;
+	}
+
     button {
       padding: 8px 12px;
       border-radius: 10px;
@@ -463,15 +489,16 @@
         livePaletteEl.appendChild(swatch);
       });
 
-      // ...then permanent white erase swatch last
-      const eraseSwatch = createSwatchButton({
-        id: ERASE_ID,
-        hex: "#ffffff"
-      });
-      eraseSwatch.title = "white / erase";
-      eraseSwatch.dataset.colorId = ERASE_ID;
-      livePaletteEl.appendChild(eraseSwatch);
-    }
+	const eraseSwatch = createSwatchButton({
+	  id: ERASE_ID,
+	  hex: "#ffffff"
+	});
+	
+	eraseSwatch.classList.add("eraseSwatch");
+	eraseSwatch.title = "erase / return to background";
+	eraseSwatch.dataset.colorId = ERASE_ID;
+	
+	livePaletteEl.appendChild(eraseSwatch);
 
     function renderBonusPalette() {
       bonusPaletteEl.innerHTML = "";
@@ -723,4 +750,5 @@
 </body>
 
 </html>
+
 
