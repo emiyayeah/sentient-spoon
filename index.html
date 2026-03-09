@@ -314,32 +314,33 @@
      **********************************************************************/
 
     const ADJECTIVES = [
-      "affectionate","antibacterial","boastful","bouncy","buoyant",
-      "buttered","cathartic","charismatic","classless","confetti",
-      "contaminated","cranky","creamy","defeated",
-      "discordant","euphoric","fancy","fatal","flirtatious",
-      "forlorn","freckled","fuzzy","glossy","long-lost",
-      "lumpy","merciful","mossy","muscular","overpraised",
-      "paranormal","poofy","pretentious","problematic","puritanical",
-      "radiant","respectable","screaming","self-important","shimmering",
-      "shiny","speckled","squishable","unemployed","velvety",
-      "victorious","wiggly","woolly"
+      "affectionate","antibacterial","bespectacled","boastful","bouncy","buoyant","buttered",
+			"cathartic","charismatic","classless","contaminated","cranky","creamy",
+			"dainty","defeated","discordant","disembodied","euphoric",
+			"fanciful","flirtatious","forlorn","freckled","fuzzy",
+			"glossy","long-lost","long-necked","lumpy",
+			"merciful","mossy","muscular","overpraised",
+      "paranormal","pretentious","problematic","puritanical",
+      "radiant","regurgitated","respectable",
+			"screaming","self-important","shimmering","shiny","squishable",
+			"unemployed","velvety","victorious","wiggly","woolly"
     ];
 
     const NOUNS = [
-      "apology","apparition","applause","artifact","bassochord",
-      "biped","biscuit","bnuy","bunny-rabbit","cackle",
-      "carnivore","cartwheel","casserole","contraption","creature",
-      "croissant","cupcake","curiosity","device","dumpling",
-      "floof","giraffe","hot-dog","invertebrate","keepsake",
-      "kitty-cat","lambchop","mechanism","no-thanks","noodle",
-      "occupant","pudding","puppy-dog","sea-slug","shawarma",
-      "shrimp","specter","stringworm","thumbs-up"
+      "alley-cat","apology","apparition","applause",
+			"bambino","bassochord","biped","biscuit","bnuy",
+			"carnivore","cartwheel","casserole","creature-of-the-night","critter","croissant","cupcake","curiosity",
+			"delusion","destroyer","dumpling",
+      "fatality","finger-puppet","floof","herbivore","hot-dog","invertebrate",
+			"keepsake","lambchop","lapdog","lowlander","marsupial","no-thanks","noodle",
+      "occupant","omen","pudding",
+			"sea-slug","shawarma","shrimp","space-invader","spaghetti","stringworm",
+			"thingamabob","torpedo","thumbs-up","yes-please"
     ];
 
     const FLOURISHES = [
-      "calamity","catastrophe","delight","disaster","masterpiece",
-      "meltdown","miracle","spectacle","surprise","tragedy"
+      "catastrophe","delight","disaster","extract","fiasco",
+			"masterpiece","miracle","surprise","tragedy"
     ];
 
     function randomName() {
@@ -499,6 +500,7 @@
 	eraseSwatch.dataset.colorId = ERASE_ID;
 	
 	livePaletteEl.appendChild(eraseSwatch);
+	}
 
     function renderBonusPalette() {
       bonusPaletteEl.innerHTML = "";
@@ -750,5 +752,6 @@
 </body>
 
 </html>
+
 
 
