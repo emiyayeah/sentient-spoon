@@ -149,22 +149,26 @@
   	gap: 10px;
 	}
 
+	.hidden {
+  	display: none;
+	}
+
   </style>
 </head>
 
 <body>
   <h1 style="margin:0;">pixel painting playground</h1>
 
-  <!-- LIVE / WEEKLY PALETTE -->
-  <div class="paletteWrap">
-    <div class="paletteBlock">
-      <div class="paletteTitle">live colors</div>
-      <div class="sectionHint">
-        this week's available colors plus a permanent white "erase" swatch </div>
-      <div class="palette" id="livePalette" aria-label="Weekly color palette"></div>
-      </div>
-    </div>
-  </div>
+	<!-- LIVE / WEEKLY PALETTE -->
+	<div class="paletteWrap">
+	  <div class="paletteBlock">
+	    <div class="paletteTitle">live colors</div>
+	    <div class="sectionHint">
+	      this week's available colors plus a permanent white "erase" swatch
+	    </div>
+	    <div class="palette" id="livePalette" aria-label="Weekly color palette"></div>
+	  </div>
+	</div>
 
   <!-- CANVAS -->
   <canvas id="c" aria-label="Pixel grid"></canvas>
@@ -174,11 +178,12 @@
   </div>
 
   <!-- BONUS COLORS -->
-  <div class="paletteWrap">
+	<button id="toggleBonusBtn" type="button">show non-live colors</button>
+  <div class="paletteWrap hidden" id="bonusPaletteSection">
     <div class="paletteBlock">
 		<div class="paletteTitle">non-live colors</div>  
       <div class="palette bonusPalette" id="bonusPalette" aria-label="Bonus color palette"></div>
-	<div class="sectionHint">
+	<div class="sectionHint">these colors aren't available <i>this</i> week, but playgrounds are for playing!
       </div>
     </div>
   </div>
@@ -315,27 +320,27 @@
 
     const ADJECTIVES = [
       "affectionate","antibacterial","bespectacled","boastful","bouncy","buoyant","buttered",
-			"cathartic","charismatic","classless","contaminated","cranky","creamy",
-			"dainty","defeated","discordant","disembodied","euphoric",
-			"fanciful","flirtatious","forlorn","freckled","fuzzy",
-			"glossy","long-lost","long-necked","lumpy",
-			"merciful","mossy","muscular","overpraised",
-      "paranormal","pretentious","problematic","puritanical",
-      "radiant","regurgitated","respectable",
-			"screaming","self-important","shimmering","shiny","squishable",
-			"unemployed","velvety","victorious","wiggly","woolly"
+		"cathartic","charismatic","classless","contaminated","cranky","creamy",
+		"dainty","defeated","discordant","disembodied","euphoric",
+		"fanciful","flirtatious","forlorn","freckled","fuzzy",
+		"glossy","long-lost","long-necked","lumpy",
+		"merciful","mossy","muscular","overpraised",
+		"paranormal","pretentious","problematic","puritanical",
+		"radiant","regurgitated","respectable",
+		"screaming","self-important","shimmering","shiny","squishable",
+		"unemployed","velvety","victorious","wiggly","woolly"
     ];
 
     const NOUNS = [
       "alley-cat","apology","apparition","applause",
-			"bambino","bassochord","biped","biscuit","bnuy",
-			"carnivore","cartwheel","casserole","creature-of-the-night","critter","croissant","cupcake","curiosity",
-			"delusion","destroyer","dumpling",
-      "fatality","finger-puppet","floof","herbivore","hot-dog","invertebrate",
-			"keepsake","lambchop","lapdog","lowlander","marsupial","no-thanks","noodle",
-      "occupant","omen","pudding",
-			"sea-slug","shawarma","shrimp","space-invader","spaghetti","stringworm",
-			"thingamabob","torpedo","thumbs-up","yes-please"
+		"bambino","bassochord","biped","biscuit","bnuy",
+		"carnivore","cartwheel","casserole","creature-of-the-night","critter","croissant","cupcake","curiosity",
+		"delusion","destroyer","dumpling",
+		"fatality","finger-puppet","floof","herbivore","hot-dog","invertebrate",
+		"keepsake","lambchop","lapdog","lowlander","marsupial","no-thanks","noodle",
+		"occupant","omen","pudding",
+		"sea-slug","shawarma","shrimp","space-invader","spaghetti","stringworm",
+		"thingamabob","torpedo","thumbs-up","yes-please"
     ];
 
     const FLOURISHES = [
@@ -396,6 +401,16 @@
     const exportBtn = document.getElementById("exportBtn");
     const exportCodeBtn = document.getElementById("exportCodeBtn");
     const loadCodeBtn = document.getElementById("loadCodeBtn");
+	const toggleBonusBtn = document.getElementById("toggleBonusBtn");
+	const bonusPaletteSection = document.getElementById("bonusPaletteSection");
+
+	toggleBonusBtn.addEventListener("click", () => {
+  	const hidden = bonusPaletteSection.classList.toggle("hidden");
+
+  	toggleBonusBtn.textContent = hidden
+   	 ? "show non-live colors"
+   	 : "hide non-live colors";
+	});
 
     const cssWidth = GRID_W * CELL_SIZE;
     const cssHeight = GRID_H * CELL_SIZE;
@@ -752,6 +767,7 @@
 </body>
 
 </html>
+
 
 
 
