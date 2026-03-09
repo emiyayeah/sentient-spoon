@@ -164,7 +164,7 @@
 	  <div class="paletteBlock">
 	    <div class="paletteTitle">live colors</div>
 	    <div class="sectionHint">
-	      this week's available colors plus a permanent white "erase" swatch
+	      all colors currently available for waystation mural-ing <br>
 	    </div>
 	    <div class="palette" id="livePalette" aria-label="Weekly color palette"></div>
 	  </div>
@@ -178,15 +178,21 @@
   </div>
 
   <!-- BONUS COLORS -->
-	<button id="toggleBonusBtn" type="button">show non-live colors</button>
-  <div class="paletteWrap hidden" id="bonusPaletteSection">
-    <div class="paletteBlock">
-		<div class="paletteTitle">non-live colors</div>  
-      <div class="palette bonusPalette" id="bonusPalette" aria-label="Bonus color palette"></div>
-	<div class="sectionHint">these colors aren't available <i>this</i> week, but playgrounds are for playing!
-      </div>
+	<div class="paletteWrap">
+  	<button id="toggleBonusBtn" type="button">show non-live colors</button>
+
+  		<div class="paletteBlock hidden" id="bonusPaletteSection">
+    <div class="paletteTitle">non-live colors</div>
+
+    <div class="palette bonusPalette" id="bonusPalette"></div>
+
+    <div class="sectionHint">
+			all remaining possible colors, provided for playground purposes
     </div>
   </div>
+</div>
+	
+
 
   <!-- ACTION BUTTONS -->
   <div class="row">
@@ -767,6 +773,7 @@
 </body>
 
 </html>
+
 
 
 
